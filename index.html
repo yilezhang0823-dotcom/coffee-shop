@@ -3,136 +3,466 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LLZ · 前端开发</title>
-  <meta name="description" content="LLZ，前端开发者，接个人主页、小店官网、活动页定制。">
-  <meta name="color-scheme" content="light dark">
-  <!-- 在样式加载前确定主题，避免刷新时闪一下 -->
-  <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem("theme");
-        if (saved === "light" || saved === "dark") {
-          document.documentElement.setAttribute("data-theme", saved);
-        }
-      } catch (e) {}
-    })();
-  </script>
+  <title>山间咖啡 Shanjian Coffee · 自家烘焙的山边小馆</title>
+  <meta name="description" content="山间咖啡：城市边缘的一间小咖啡馆。自家烘焙、单一产地手冲、手作甜点，欢迎预约座位。">
+  <meta name="theme-color" content="#f6f1e9">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232b1d14'/%3E%3Cpath d='M6 23 13 12l4 6 3-4 6 9z' fill='none' stroke='%23d9a066' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
-<body id="top">
-  <a class="skip-link" href="#main">跳到正文</a>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="回到顶部">LLZ</a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#about">关于</a>
-        <a href="#projects">项目</a>
-        <a href="#contact">联系</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="切换深浅色">
-        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+  <!-- ========== 顶部导航 ========== -->
+  <header class="site-header" id="top">
+    <div class="container header__inner">
+      <a class="brand" href="#home" aria-label="山间咖啡 首页">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 24 12.5 10l5 8 3.5-5L28 24" />
+          <path d="M4 27.5h24" />
         </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
-        </svg>
+        <span class="brand__text">
+          <span class="brand__zh">山间咖啡</span>
+          <span class="brand__en">SHANJIAN COFFEE</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="nav-toggle__label">菜单</span>
       </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#menu">菜单</a></li>
+          <li><a class="site-nav__link" href="#about">关于我们</a></li>
+          <li><a class="site-nav__link" href="#visit">营业信息</a></li>
+          <li><a class="site-nav__link site-nav__link--cta" href="#reserve">预约座位</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- 自我介绍 -->
-    <section id="about" class="section hero" aria-labelledby="about-title">
-      <div class="container hero-inner">
-        <div class="avatar" role="img" aria-label="头像占位">
-          <!-- 换成真实头像：<img src="avatar.jpg" alt="LLZ"> -->
-          <span>LLZ</span>
+    <!-- ========== 首屏 ========== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow"><span class="mono">No.01</span><span class="eyebrow__rule" aria-hidden="true"></span>自家烘焙 · 单一产地 · 山边小馆</p>
+
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__title-zh" aria-label="山间咖啡">
+              <span class="char" style="--i:0" aria-hidden="true">山</span><span class="char" style="--i:1" aria-hidden="true">间</span><span class="char" style="--i:2" aria-hidden="true">咖</span><span class="char" style="--i:3" aria-hidden="true">啡</span>
+            </span>
+            <span class="hero__title-en" style="--i:5">SHANJIAN COFFEE</span>
+          </h1>
+
+          <p class="hero__lead" style="--i:6">在城市的尽头、山路的起点，<br class="br-wide">留一杯慢下来的时间。</p>
+
+          <div class="hero__actions" style="--i:7">
+            <a class="btn btn--primary" href="#menu">查看菜单</a>
+            <a class="btn btn--ghost" href="#reserve">预约座位<span class="btn__arrow" aria-hidden="true">→</span></a>
+          </div>
+
+          <dl class="hero__facts" style="--i:8">
+            <div><dt class="mono">01</dt><dd>每周两次<br>小批量烘焙</dd></div>
+            <div><dt class="mono">02</dt><dd>六支单一产地<br>轮换上架</dd></div>
+            <div><dt class="mono">03</dt><dd>甜点每日<br>限量手作</dd></div>
+          </dl>
         </div>
-        <div class="hero-text">
-          <p class="eyebrow">你好，我是</p>
-          <h1 id="about-title">LLZ</h1>
-          <p class="tagline">前端开发者，帮个人和小店做清爽好用的网站。</p>
-          <p class="bio">
-            个人主页、小店官网、活动页都可以做，手机和电脑都好看。
-            从需求沟通到上线部署，一起搞定。
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">看看项目</a>
-            <a class="btn btn-ghost" href="#contact">联系我</a>
+
+        <figure class="hero__art" aria-hidden="true">
+          <svg class="cup" viewBox="0 0 360 360" role="presentation">
+            <defs>
+              <path id="ring-path" d="M180 180m-150 0a150 150 0 1 1 300 0a150 150 0 1 1-300 0" />
+            </defs>
+            <g class="cup__ring">
+              <text class="cup__ring-text"><textPath href="#ring-path" textLength="930" lengthAdjust="spacing">SLOW BREW · HAND ROASTED · MOUNTAIN AIR · EST. 2019 · ALT. 860 M · </textPath></text>
+            </g>
+            <circle class="cup__orbit" cx="180" cy="180" r="128" />
+
+            <g class="steam">
+              <path class="steam__line steam__line--1" d="M150 150c-10-14 10-24 0-40s8-26 2-38" />
+              <path class="steam__line steam__line--2" d="M180 146c-12-16 12-26 0-44s10-28 2-42" />
+              <path class="steam__line steam__line--3" d="M210 150c-10-14 10-24 0-40s8-26 2-38" />
+            </g>
+
+            <g class="cup__body">
+              <ellipse cx="180" cy="268" rx="104" ry="16" />
+              <ellipse class="cup__thin" cx="180" cy="268" rx="70" ry="9" />
+              <path d="M112 176h136l-10 66c-3 16-18 26-34 26h-48c-16 0-31-10-34-26z" />
+              <ellipse cx="180" cy="176" rx="68" ry="12" />
+              <ellipse class="cup__coffee" cx="180" cy="177" rx="58" ry="8" />
+              <path d="M247 190c22-6 38 4 36 20s-20 26-44 22" />
+              <path class="cup__thin" d="M244 200c14-3 24 2 23 11s-12 15-28 13" />
+              <path class="cup__accent" d="M124 214h112" />
+            </g>
+
+            <g class="cup__bean" transform="translate(84 252) rotate(-28)">
+              <ellipse rx="11" ry="7" />
+              <path d="M-10 0c4-3 6 3 10 0s6 3 10 0" />
+            </g>
+          </svg>
+          <figcaption class="hero__caption mono">FIG.01 — 今日手冲 · 耶加雪菲</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ========== 菜单 ========== -->
+    <section class="section menu" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-head__index mono">02 / MENU</p>
+          <h2 class="section-head__title" id="menu-title">今日菜单</h2>
+          <p class="section-head__desc">豆单随季节轮换。所有咖啡都可以换燕麦奶，不另收费；想喝得清淡些，也可以和吧台说一声。</p>
+        </header>
+
+        <div class="tabs" data-reveal>
+          <div class="tabs__list" role="tablist" aria-label="菜单分类">
+            <button class="tabs__tab" type="button" role="tab" id="tab-coffee" aria-controls="panel-coffee" aria-selected="true">咖啡<span class="tabs__en">COFFEE</span></button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-tea" aria-controls="panel-tea" aria-selected="false" tabindex="-1">茶饮<span class="tabs__en">TEA</span></button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-dessert" aria-controls="panel-dessert" aria-selected="false" tabindex="-1">甜点<span class="tabs__en">DESSERT</span></button>
+            <span class="tabs__indicator" aria-hidden="true"></span>
+          </div>
+
+          <!-- 咖啡 -->
+          <div class="tabs__panel is-active" role="tabpanel" id="panel-coffee" aria-labelledby="tab-coffee" tabindex="0">
+            <ol class="menu-list">
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">C01</span>
+                  <h3 class="menu-item__name">耶加雪菲 · 手冲</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥38</span>
+                </div>
+                <p class="menu-item__desc">埃塞俄比亚 · 水洗 · 浅烘。茉莉花香、柑橘与蜂蜜回甘，V60 慢冲，放凉一点更甜。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">C02</span>
+                  <h3 class="menu-item__name">云南保山 · 手冲</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥32</span>
+                </div>
+                <p class="menu-item__desc">保山小粒 · 日晒 · 中烘。烤坚果、红糖与黑巧克力尾韵，聪明杯浸泡，口感圆润。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">C03</span>
+                  <h3 class="menu-item__name">肯尼亚 AA · 冰滴</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥36</span>
+                </div>
+                <p class="menu-item__desc">涅里产区 · 水洗。8 小时冰水慢滴，黑醋栗与番茄般明亮的酸质，每日限量 20 杯。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">C04</span>
+                  <h3 class="menu-item__name">山间燕麦拿铁</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥30</span>
+                </div>
+                <p class="menu-item__desc">自家意式拼配（巴西 + 云南）· 中深烘。配燕麦奶，焦糖与烤谷物香，冷热皆可。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">C05</span>
+                  <h3 class="menu-item__name">澳白 Flat White</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥28</span>
+                </div>
+                <p class="menu-item__desc">双份浓缩 + 细腻薄奶泡，奶咖比约 2 : 1。咖啡味更足，适合早上的第一杯。</p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- 茶饮 -->
+          <div class="tabs__panel" role="tabpanel" id="panel-tea" aria-labelledby="tab-tea" tabindex="0" hidden>
+            <ol class="menu-list">
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">T01</span>
+                  <h3 class="menu-item__name">武夷肉桂 · 盖碗</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥32</span>
+                </div>
+                <p class="menu-item__desc">福建武夷山 · 足火炭焙。桂皮辛香与岩韵，盖碗出汤，可续水三次。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">T02</span>
+                  <h3 class="menu-item__name">白毫银针 · 冷泡</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥28</span>
+                </div>
+                <p class="menu-item__desc">福鼎白茶 · 12 小时冷泡。毫香清甜、几乎不涩，夏天的解渴首选。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">T03</span>
+                  <h3 class="menu-item__name">桂花乌龙鲜奶茶</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥26</span>
+                </div>
+                <p class="menu-item__desc">高山乌龙现煮 + 鲜牛奶，配店里自熬的桂花糖浆，甜度可调。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">T04</span>
+                  <h3 class="menu-item__name">柚子煎茶气泡</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥26</span>
+                </div>
+                <p class="menu-item__desc">日式煎茶冷萃、自制柚子酱、气泡水。微苦回甘，不含咖啡的提神选择。</p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- 甜点 -->
+          <div class="tabs__panel" role="tabpanel" id="panel-dessert" aria-labelledby="tab-dessert" tabindex="0" hidden>
+            <ol class="menu-list">
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">D01</span>
+                  <h3 class="menu-item__name">巴斯克芝士蛋糕</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥32</span>
+                </div>
+                <p class="menu-item__desc">高温烤出焦糖色外皮，内里半流心。每日限 12 块，建议搭配手冲。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">D02</span>
+                  <h3 class="menu-item__name">古早焦糖布丁</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥22</span>
+                </div>
+                <p class="menu-item__desc">只用鸡蛋、牛奶和糖，口感偏扎实；焦糖熬到微苦，平衡甜度。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">D03</span>
+                  <h3 class="menu-item__name">发酵黄油可颂</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥18</span>
+                </div>
+                <p class="menu-item__desc">法式发酵黄油、27 层折叠，每天早上 9 点出炉，外壳酥脆、内里蜂窝状。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">D04</span>
+                  <h3 class="menu-item__name">山核桃肉桂卷</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥24</span>
+                </div>
+                <p class="menu-item__desc">临安山核桃、锡兰肉桂，顶上一层薄薄的奶油乳酪霜，温热供应。</p>
+              </li>
+              <li class="menu-item">
+                <div class="menu-item__row">
+                  <span class="menu-item__no mono">D05</span>
+                  <h3 class="menu-item__name">柠檬磅蛋糕</h3>
+                  <span class="menu-item__dots" aria-hidden="true"></span>
+                  <span class="menu-item__price mono"><span class="visually-hidden">价格</span>¥20</span>
+                </div>
+                <p class="menu-item__desc">新鲜柠檬皮与柠檬糖霜，湿润不腻，和浅烘的花果调咖啡最合拍。</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <p class="menu__note mono" data-reveal>* 价格含税 · 豆子可按 100 g 外带，详询吧台</p>
+      </div>
+    </section>
+
+    <!-- ========== 关于我们 ========== -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <figure class="about__art" data-reveal aria-hidden="true">
+          <svg viewBox="0 0 400 440" role="presentation">
+            <rect class="about__frame" x="0.5" y="0.5" width="399" height="439" rx="4" />
+            <circle class="about__sun" cx="286" cy="118" r="38" />
+            <path class="about__mtn about__mtn--back" d="M24 300 118 168l56 74 62-96 140 154" />
+            <path class="about__mtn" d="M24 330 150 196l70 84 46-52 110 102" />
+            <path class="about__hatch" d="M150 196 120 330M150 196 172 330M266 228 252 330M266 228 300 330" />
+            <line class="about__ground" x1="24" y1="330" x2="376" y2="330" />
+            <g class="about__bean" transform="translate(200 382)">
+              <ellipse rx="44" ry="27" />
+              <path d="M-40 4c14-14 24 10 40-2s26 12 40-2" />
+            </g>
+            <text class="about__label" x="24" y="40">N 29°42′ · ALT. 860 M</text>
+            <text class="about__label" x="376" y="424" text-anchor="end">FIG.02 — 山与豆</text>
+          </svg>
+        </figure>
+
+        <div class="about__copy">
+          <header class="section-head" data-reveal>
+            <p class="section-head__index mono">03 / ABOUT</p>
+            <h2 class="section-head__title" id="about-title">一间开在<br>上山路边的小店</h2>
+          </header>
+          <div class="prose" data-reveal>
+            <p>2019 年秋天，我们把旧茶铺的木窗擦干净，在门口放了一台小小的烘豆机。店里只有十二个座位，窗外是一整座山。</p>
+            <p>我们相信咖啡和山一样，需要时间。每一批豆子都是自己烘的，每一杯都慢慢地冲。来的人有赶早班的、有爬山歇脚的，也有只是想安静坐一个下午的。</p>
+            <p>如果你路过，进来坐坐。不着急，水刚好烧开。</p>
+          </div>
+          <p class="signature" data-reveal><span class="signature__line" aria-hidden="true"></span>阿山 &amp; 小间 · 店主</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 营业信息 ========== -->
+    <section class="section visit" id="visit" aria-labelledby="visit-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-head__index mono">04 / VISIT</p>
+          <h2 class="section-head__title" id="visit-title">来店里坐坐</h2>
+        </header>
+
+        <div class="visit__grid">
+          <div class="visit__block" data-reveal>
+            <h3 class="visit__label mono">ADDRESS · 地址</h3>
+            <address class="visit__address">
+              云岭市松溪区山径路 18 号<br>
+              （松溪步道入口往上 200 米，木门白招牌）
+            </address>
+            <p class="visit__hint">自驾可停在步道入口停车场；步行从公交「松溪口」站出发约 6 分钟。</p>
+          </div>
+
+          <div class="visit__block" data-reveal>
+            <h3 class="visit__label mono">HOURS · 营业时间</h3>
+            <p class="visit__status" id="open-status" aria-live="polite"></p>
+            <table class="hours">
+              <caption class="visually-hidden">每周营业时间</caption>
+              <tbody>
+                <tr data-day="1" data-open="08:00" data-close="20:00"><th scope="row">周一</th><td class="mono">08:00 – 20:00</td></tr>
+                <tr data-day="2" data-open="08:00" data-close="20:00"><th scope="row">周二</th><td class="mono">08:00 – 20:00</td></tr>
+                <tr data-day="3" data-closed><th scope="row">周三</th><td>店休 · 烘豆日</td></tr>
+                <tr data-day="4" data-open="08:00" data-close="20:00"><th scope="row">周四</th><td class="mono">08:00 – 20:00</td></tr>
+                <tr data-day="5" data-open="08:00" data-close="21:00"><th scope="row">周五</th><td class="mono">08:00 – 21:00</td></tr>
+                <tr data-day="6" data-open="09:00" data-close="21:00"><th scope="row">周六</th><td class="mono">09:00 – 21:00</td></tr>
+                <tr data-day="0" data-open="09:00" data-close="19:00"><th scope="row">周日</th><td class="mono">09:00 – 19:00</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="visit__block" data-reveal>
+            <h3 class="visit__label mono">CONTACT · 联系</h3>
+            <ul class="contact-list">
+              <li><span class="contact-list__k">电话</span><a class="link mono" href="tel:+8600000000000">000-0000-0000</a></li>
+              <li><span class="contact-list__k">邮箱</span><a class="link mono" href="mailto:hello@shanjian.example">hello@shanjian.example</a></li>
+              <li><span class="contact-list__k">微信</span><span class="mono">shanjian_coffee</span></li>
+            </ul>
+            <p class="visit__hint">6 人以上包场或活动合作，请提前三天电话联系。</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 项目 -->
-    <section id="projects" class="section" aria-labelledby="projects-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="projects-title">项目</h2>
-          <p class="section-note">挑几件最能代表你的作品。</p>
+    <!-- ========== 预约（深色区块） ========== -->
+    <section class="section reserve" id="reserve" aria-labelledby="reserve-title">
+      <div class="container reserve__grid">
+        <div class="reserve__intro">
+          <header class="section-head section-head--dark" data-reveal>
+            <p class="section-head__index mono">05 / RESERVE</p>
+            <h2 class="section-head__title" id="reserve-title">给你留一个<br>靠窗的位置</h2>
+          </header>
+          <ul class="reserve__notes" data-reveal>
+            <li><span class="mono">—</span>座位保留 15 分钟，迟到请提前告诉我们</li>
+            <li><span class="mono">—</span>每桌最多 6 位，更多人数请电话联系</li>
+            <li><span class="mono">—</span>可预约 30 天内的座位，周三店休</li>
+          </ul>
         </div>
 
-        <ul class="projects">
-          <li class="card">
-            <span class="card-index">01</span>
-            <h3 class="card-title">山间咖啡 · 咖啡店官网</h3>
-            <p class="card-desc">为虚构咖啡店设计的精品风官网：菜单分类切换、实时营业状态、带校验的预约表单。纯 HTML/CSS/JS，手机电脑都适配。</p>
-            <a class="card-link" href="https://coffee-shop-phi-murex.vercel.app" target="_blank" rel="noopener">
-              查看项目 <span aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="card">
-            <span class="card-index">02</span>
-            <h3 class="card-title">项目名称二</h3>
-            <p class="card-desc">一两句话说明这个项目解决了什么问题、用了什么技术、你负责哪部分。</p>
-            <a class="card-link" href="https://example.com" target="_blank" rel="noopener">
-              查看项目 <span aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="card">
-            <span class="card-index">03</span>
-            <h3 class="card-title">项目名称三</h3>
-            <p class="card-desc">一两句话说明这个项目解决了什么问题、用了什么技术、你负责哪部分。</p>
-            <a class="card-link" href="https://example.com" target="_blank" rel="noopener">
-              查看项目 <span aria-hidden="true">→</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
+        <div class="reserve__panel" data-reveal>
+          <form class="form" id="reserve-form" novalidate aria-describedby="form-hint">
+            <p class="form__hint" id="form-hint">带 <span aria-hidden="true">*</span><span class="visually-hidden">星号</span> 的为必填项。本页面为作品演示，提交不会发送任何数据。</p>
 
-    <!-- 联系 -->
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="contact-title">联系</h2>
-          <p class="section-note">欢迎来信聊合作、交流或者随便打个招呼。</p>
+            <div class="form__grid">
+              <div class="field">
+                <input class="field__input" id="f-name" name="name" type="text" placeholder=" " autocomplete="name" maxlength="20" required aria-describedby="err-name">
+                <label class="field__label" for="f-name">称呼 <span aria-hidden="true">*</span></label>
+                <p class="field__error" id="err-name" aria-live="polite"></p>
+              </div>
+
+              <div class="field">
+                <input class="field__input" id="f-phone" name="phone" type="tel" inputmode="numeric" placeholder=" " autocomplete="tel" maxlength="13" required aria-describedby="err-phone">
+                <label class="field__label" for="f-phone">手机号 <span aria-hidden="true">*</span></label>
+                <p class="field__error" id="err-phone" aria-live="polite"></p>
+              </div>
+
+              <div class="field field--static">
+                <input class="field__input" id="f-date" name="date" type="date" required aria-describedby="err-date">
+                <label class="field__label" for="f-date">日期 <span aria-hidden="true">*</span></label>
+                <p class="field__error" id="err-date" aria-live="polite"></p>
+              </div>
+
+              <div class="field field--static">
+                <input class="field__input" id="f-time" name="time" type="time" step="900" required aria-describedby="err-time">
+                <label class="field__label" for="f-time">到店时间 <span aria-hidden="true">*</span></label>
+                <p class="field__error" id="err-time" aria-live="polite"></p>
+              </div>
+
+              <div class="field field--static field--full">
+                <select class="field__input field__select" id="f-guests" name="guests" required aria-describedby="err-guests">
+                  <option value="">请选择</option>
+                  <option value="1">1 位</option>
+                  <option value="2">2 位</option>
+                  <option value="3">3 位</option>
+                  <option value="4">4 位</option>
+                  <option value="5">5 位</option>
+                  <option value="6">6 位</option>
+                </select>
+                <label class="field__label" for="f-guests">人数 <span aria-hidden="true">*</span></label>
+                <p class="field__error" id="err-guests" aria-live="polite"></p>
+              </div>
+
+              <div class="field field--full">
+                <textarea class="field__input field__textarea" id="f-note" name="note" rows="3" placeholder=" " maxlength="200" aria-describedby="note-count"></textarea>
+                <label class="field__label" for="f-note">备注（选填，如想坐窗边、带小朋友）</label>
+                <p class="field__meta mono" id="note-count" aria-live="off">0 / 200</p>
+              </div>
+            </div>
+
+            <button class="btn btn--light form__submit" type="submit">提交预约<span class="btn__arrow" aria-hidden="true">→</span></button>
+          </form>
+
+          <div class="confirm" id="reserve-confirm" hidden>
+            <svg class="confirm__icon" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" />
+              <path d="M15 24.5 21.5 31 33 18" />
+            </svg>
+            <p class="confirm__index mono">RESERVATION RECEIVED</p>
+            <h3 class="confirm__title" id="confirm-title" tabindex="-1">预约已提交</h3>
+            <p class="confirm__lead"><span id="c-name"></span>，我们已经记下了，到店报手机尾号即可。</p>
+            <dl class="confirm__summary">
+              <div><dt class="mono">DATE</dt><dd id="c-date"></dd></div>
+              <div><dt class="mono">TIME</dt><dd id="c-time"></dd></div>
+              <div><dt class="mono">GUESTS</dt><dd id="c-guests"></dd></div>
+              <div><dt class="mono">PHONE</dt><dd id="c-phone" class="mono"></dd></div>
+            </dl>
+            <p class="confirm__note">这是作品演示页面，实际不会发送任何数据。</p>
+            <button class="btn btn--ghost-light" type="button" id="reserve-again">再约一次</button>
+          </div>
         </div>
-
-        <ul class="contact-list">
-          <li>
-            <span class="contact-label">邮箱</span>
-            <a class="contact-value" href="mailto:yilezhang0823@gmail.com">yilezhang0823@gmail.com</a>
-            <button class="copy-btn" type="button" data-copy="yilezhang0823@gmail.com">复制</button>
-          </li>
-          <li>
-            <span class="contact-label">GitHub</span>
-            <a class="contact-value" href="https://github.com/yilezhang0823-dotcom" target="_blank" rel="noopener">github.com/yilezhang0823-dotcom</a>
-          </li>
-        </ul>
       </div>
     </section>
   </main>
 
+  <!-- ========== 页脚 ========== -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>© <span id="year">2026</span> LLZ</span>
-      <a href="#top">回到顶部 ↑</a>
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__zh">山间咖啡</span>
+        <span class="brand__en">SHANJIAN COFFEE</span>
+      </div>
+      <p class="footer__meta mono">© <span id="year">2026</span> Shanjian Coffee · 虚构品牌，作品集演示</p>
+      <a class="link footer__top" href="#home">回到顶部 ↑</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <button class="to-top" type="button" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+  </button>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
